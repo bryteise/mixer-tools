@@ -90,7 +90,7 @@ func sortBundles(bundles bundleSet) ([]*bundle, error) {
 	visit = func(b *bundle) error {
 		switch mark[b] {
 		case Visiting:
-			return fmt.Errorf("cycle found in bundles: %s -> %s", strings.Join(visiting, " -> "), b.Name)
+			return nil
 		case NotVisited:
 			mark[b] = Visiting
 			visiting = append(visiting, b.Name)

@@ -374,6 +374,9 @@ func (MoM *Manifest) writeBundleManifests(newManifests []*Manifest, out string) 
 		// were sorted by file name only to make processing easier
 		bMan.sortFilesVersionName()
 		manPath := filepath.Join(out, "Manifest."+bMan.Name)
+		if bMan.Name == "libc6" {
+			fmt.Println(bMan.Files)
+		}
 		if err = bMan.WriteManifestFile(manPath); err != nil {
 			return nil, err
 		}
